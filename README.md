@@ -9,8 +9,8 @@ gulp.task('icon', function () {
         .pipe(spriteIcons({
             monoSuffix: ".mono", // default .mono
             output: {
-                sprite: '/assets/icons.svg', // relative to dest (defalt 'icons.svg')
-                styles: '/scss/icons.scss', // relative to dest (defalt 'icons.scss')
+                sprite: './assets/icons.svg', // relative to dest (defalt 'icons.svg')
+                styles: './scss/icons.scss', // relative to dest (defalt 'icons.scss')
             }
         }))
         .pipe(gulp.dest('src'));
