@@ -13,7 +13,7 @@ module.exports = function(opts) {
     options.output.sprite = options.output.sprite || 'icons.svg';
     options.output.styles = options.output.styles || 'icons.scss';
 
-    const monoIcons = {}; // TODO: проверить здесь ли он должен быть
+    const monoIcons = {};
 
     return svgSprite({
         shape: {
@@ -51,11 +51,6 @@ module.exports = function(opts) {
         },
         svg: {
             transform: [
-                /**
-                 * Adds defs tag at the top of svg with all extracted gradients.
-                 * @param {string} svg
-                 * @return {string} svg
-                 */
                 function(svg) {
                     return svg.replace(
                         '<symbol ',
@@ -90,12 +85,6 @@ module.exports = function(opts) {
     })
 };
 
-/**
- * Extracts gradient from the sprite and replaces their ids to prevent duplicates.
- * @param {SVGShape} shape
- * @param {SVGSpriter} spriter
- * @param {Function} callback
- */
 function gradientsExtraction(shape, spriter, callback) {
     const idsToReplace = [].concat(
         extractGradients(shape, 'linearGradient'),
@@ -107,12 +96,6 @@ function gradientsExtraction(shape, spriter, callback) {
     callback(null);
 }
 
-/**
- * Extracts specific gradient defined by tag from given shape.
- * @param {SVGShape} shape
- * @param {string} tag
- * @return {Array}
- */
 function extractGradients(shape, tag) {
     const idsToReplace = [];
 
@@ -132,12 +115,6 @@ function extractGradients(shape, tag) {
     return idsToReplace;
 }
 
-/**
- * Updates urls in given SVG from array of [oldId, newId].
- * @param {string} svg
- * @param {Array} idsToReplace
- * @return {string}
- */
 function updateUrls(svg, idsToReplace) {
     for (var i = 0; i < idsToReplace.length; i++) {
         const str = 'url(#' + idsToReplace[i][0] + ')';
@@ -150,11 +127,6 @@ function updateUrls(svg, idsToReplace) {
     return svg;
 }
 
-/**
- * Escape regex characters in given string
- * @param {string} str
- * @return {string}
- */
 function regexEscape(str) {
     return str.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
 }
