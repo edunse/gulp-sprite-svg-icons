@@ -1,0 +1,13 @@
+{
+  "name": "gulp-sprite-svg-icons",
+  "version": "1.0.3",
+  "description": "",
+  "main": "index.js",
+  "scripts": { },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gulp-svg-sprite": "^1.5.0",
+    "xmldom": "^0.1.27"
+  }
+}
