@@ -33,6 +33,7 @@ module.exports = function(opts) {
                 function (shape, sprite, callback) {
                     let newSVG = shape.svg.current;
                     if (monoIcons[shape.id]) {
+                        newSVG = newSVG.replace(/fill="none"/, '');
                         newSVG = newSVG.replace(/fill="(#[^"]+)"/, function (match, color) {
                             monoIcons[shape.id].fill = color;
                             return '';
